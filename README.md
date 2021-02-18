@@ -1,5 +1,5 @@
 # school-bell
-Cron based command line school-bell alarm system for linux.
+Cron based command line school-bell alarm system for linux, playing custom audio files as alarm ringtones. 
 
 ## Dependencies
 - linux OS (ubuntu tested)
@@ -12,7 +12,7 @@ Cron based command line school-bell alarm system for linux.
 
 ## Installation
 Execute next command in a linux terminal:
-1. clone repository: `git clone git@github.com:liszi/school-bell.git`
+1. clone repository: `git clone https://github.com/liszi/school-bell.git`
 2. enter downloaded folder: `cd school-bell`
 3. start install script: `./install.sh`
 4. enter a password for root permission when script asks for it
@@ -24,7 +24,8 @@ After installation, in the home directory of the installer user the `school-bell
 This folder contains all the data and logs for the *school-bell* application.
 
 #### ~/school-bell/ringtones folder
-This folder contains all the ringtones for *school-bell* application. Any audio file can be copied here which can be played by `mplayer`.
+This folder contains all the ringtones for *school-bell* application. 
+Any audio file can be copied here which can be played by `mplayer`. (e.g. mp3, wav, ogg...)
 
 [ring command](#ring-command) will find any audio file in this folder based on filename (without full path).
 
