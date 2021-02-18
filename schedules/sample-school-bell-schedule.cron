@@ -1,6 +1,6 @@
-0 8 * * * ring school-bell-3-seconds.mp3 # Period 1 start ring at 8:00 every weekday
+0 8 * * * ring school-bell-3-seconds.mp3 # Period 1 start ring at 8:00 every day
 40 8 * * 1-5 ring school-bell-1-seconds.mp3 # Period 1 alarm ring at 8:40 every weekday
-45 8 * * 1-5 ring school-bell-3-seconds.mp3 # Break 1 ring at 8:40 every weekday
+45 8 * * 1-5 ring school-bell-3-seconds.mp3
 0 9 * * 1-5 ring school-bell-3-seconds.mp3 
 40 9 * * 1-5 ring school-bell-1-seconds.mp3 
 45 9 * * 1-5 ring school-bell-3-seconds.mp3

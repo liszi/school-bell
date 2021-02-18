@@ -17,6 +17,21 @@ Execute next command in a linux terminal:
 3. start install script: `./install.sh`
 4. enter a password for root permission when script asks for it
 
+## Quickstart
+After the successful installation, you can test the school-bell alarm with enabling the sample per-minute schedule
+with executing the next command in terminal:
+
+`crontab ~/school-bell/schedules/sample-schedule-every-minute.cron`
+
+It should play default school-bell ringtone every minute.
+
+To disable the alarm, run `crontab -r`
+
+Check the sample school-bell schedule at `~/school-bell/schedules/sample-school-bell-schedule.cron`, edit as expected,
+and activate it with the next command:
+
+`crontab ~/school-bell/schedules/sample-school-bell-schedule.cron`
+
 ## Installed files
 
 ### ~/school-bell folder
@@ -61,45 +76,25 @@ To generate linux crontab lines use one of the online crontab generator applicat
 - http://www.crontabgenerator.com/
 - https://corntab.com/
 
-Let's check the `~/school-bell/schedules/sample-school-bell-schedule.cron` sample crontab file content:
+Let's check part of the `~/school-bell/schedules/sample-school-bell-schedule.cron` sample crontab file content:
 
 ```
-0 8 * * * ring school-bell-3-seconds.mp3 # Period 1 start ring at 8:00 every weekday
+0 8 * * * ring school-bell-3-seconds.mp3 # Period 1 start ring at 8:00 every day
 40 8 * * 1-5 ring school-bell-1-seconds.mp3 # Period 1 alarm ring at 8:40 every weekday
-45 8 * * 1-5 ring school-bell-3-seconds.mp3 # Break 1 ring at 8:40 every weekday
-0 9 * * 1-5 ring school-bell-3-seconds.mp3 
-40 9 * * 1-5 ring school-bell-1-seconds.mp3 
-45 9 * * 1-5 ring school-bell-3-seconds.mp3
-0 10 * * 1-5 ring school-bell-3-seconds.mp3 
-40 10 * * 1-5 ring school-bell-1-seconds.mp3
-45 10 * * 1-5 ring school-bell-3-seconds.mp3
-0 11 * * 1-5 ring school-bell-3-seconds.mp3
-40 11 * * 1-5 ring school-bell-1-seconds.mp3
-45 11 * * 1-5 ring school-bell-3-seconds.mp3
-0 12 * * * ring school-bell-3-seconds.mp3 # Period 5 ring at 12:00 every day
-40 12 * * 1-5 ring school-bell-1-seconds.mp3
-45 12 * * 1-5 ring school-bell-3-seconds.mp3
-55 12 * * 1-5 ring school-bell-3-seconds.mp3
-35 13 * * 1-5 ring school-bell-1-seconds.mp3
-40 13 * * 1-5 ring school-bell-3-seconds.mp3
-0 14 * * 1-5 ring school-bell-3-seconds.mp3
-40 14 * * 1-5 ring school-bell-1-seconds.mp3
-45 14 * * 1-5 ring school-bell-3-seconds.mp3
-0 15 * * 1-5 ring school-bell-3-seconds.mp3
-40 15 * * 1-5 ring school-bell-1-seconds.mp3
-45 15 * * 1-5 ring school-bell-3-seconds.mp3
+45 8 * * 1-5 ring school-bell-3-seconds.mp3
 ```
 
-Each line is represents a cronjob of a daily alarm. First part of the cronjob defines the timing, with 5 sections (`40 12 * * 1-5`): minute hours day-of-month month day-of-week. 
+Each line is representing a cronjob of a daily alarm. First part of the cronjob is defining the timing, with 5 sections (`40 12 * * 1-5`): minute hours day-of-month month day-of-week. 
 After that `ring school-bell-1-seconds.mp3` is the command with the ringtone argument, which plays the ringtone audio with the given timing. After`#` sign comments can be added to each line.
 
 From more details check [cron](https://en.wikipedia.org/wiki/Cron).
 
 ### Activate schedule
-To activate a specific *school-bell* schedule, a specific crontab file should be selected with `crontab <filename>` command:
+To activate a specific *school-bell* schedule, a specific crontab file should be selected with `crontab <filepath>` command:
 
-1. enter schedules folder: `cd ~/school-bell/schedules`
-2. activate a schedule: `crontab sample-school-bell-schedule.cron`
+With the next command you can activate the sample school-bell schedule: 
+
+`crontab ~/school-bell/schedules/sample-school-bell-schedule.cron`
 
 This will overwrite the previous active crontab. 
 
@@ -114,3 +109,10 @@ This command will deactivate all the active crontabs, and remove the installed c
 
 Uninstall will not remove the school-bell working directory since it can contain important crontabs and ringtones.
 To remove all the crontabs and ringtones execute `rm -r ~/school-bell/` command in terminal manually.
+
+
+## Troubleshooting
+1. When you can't hear sound, test your audio with playing some sound if it is working properly.
+2. Check your crontab and it's timing if it is configured as expected with executing `crontab -l` in terminal.
+You should see the same content as the schedule file `*.cron`, what you've activated last time. If it is not there, activate it again.
+3. User must be logged in to hear the sound.
