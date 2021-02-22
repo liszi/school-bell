@@ -98,6 +98,8 @@ With the next command you can activate the sample school-bell schedule:
 
 This will overwrite the previous active crontab. 
 
+To see the active schedule, type `crontab -l` into terminal. 
+
 ### Disable schedule
 To stop all the school-bell alarms run `crontab -r`.
 
@@ -112,7 +114,24 @@ To remove all the crontabs and ringtones execute `rm -r ~/school-bell/` command 
 
 
 ## Troubleshooting
-1. When you can't hear sound, test your audio with playing some sound if it is working properly.
+
+### Can't hear school-bell ring sound
+1. Test your audio with playing some sound if it is working properly.
 2. Check your crontab and it's timing if it is configured as expected with executing `crontab -l` in terminal.
 You should see the same content as the schedule file `*.cron`, what you've activated last time. If it is not there, activate it again.
-3. User must be logged in to hear the sound.
+3. `mplayer` must be installed and available from terminal.
+4. User must be logged in to hear the sound.
+5. Check `~/school-bell/log.txt` file for detailed info.
+
+### School-bell ring played instead of my custom audio
+When `ring` command can't find the defined custom audio file, it'll play the default ringtone. Possible reasons:
+1. No custom ringtone is not provided after ring command in the active schedule.
+2. Provided custom ringtone path is invalid. Provide full path of the ringtone, or copy it to `~/school-bell/ringtones` folder and provide only filename.  
+3. Check `~/school-bell/log.txt` file for detailed info.
+
+### Incorrect schedule timing
+1. Check if the system time is in sync. You need internet connection, and enabled time syncronization to network time (with NTP)
+2. Check your system timezone.
+3. Check your active schedule with `crontab -l` command if it is the expected.
+
+
